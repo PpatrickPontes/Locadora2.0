@@ -24,15 +24,15 @@ public class Teste {
         //-----------------------------------------------------
         // Testar - INSERIR
         Usuarios u = new Usuarios();
-        u.setLogin("Peixe boi");
-        u.setNome("Patrick");
+        u.setLogin("Caca");
+        u.setNome("Camila");
         
          String senha = "123456";
          String senhaCritografada = DigestUtils.sha512Hex(senha);
          
         u.setSenha(senhaCritografada);
-        u.setPerfil("Adm");
-        u.setStatus("Ativo");
+        u.setPerfil("Usu");
+        u.setStatus("inativo");
        
         try{
             UsuariosDAO.inserir(u);
@@ -49,20 +49,20 @@ public class Teste {
         /*
         //-----------------------------------------------------
         // Testar - Buscar
-        Produto p = null;
+        Usuarios u= null;
         
         try{
-            p = ProdutoDAO.buscar(15);
+            u = UsuariosDAO.buscar(15);
         }catch(Exception e){
             e.printStackTrace();
             return;
         }
         System.out.println("Produto: " + 
-                    p.getIdProduto() + " - " + 
-                    p.getDescProduto());
+                    u.getLogin()+ " - " + 
+                    u.getSenha());
+        
         
         */
-        
         /*
         //-----------------------------------------------------
         // Testar - Atualizar

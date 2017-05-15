@@ -47,12 +47,13 @@ public class UsuariosDAO {
         
     }    
     
-    public static boolean buscar(Usuarios u) throws SQLException, ClassNotFoundException{
+    public static Usuarios buscar(Usuarios u) throws SQLException, ClassNotFoundException{
         
         Connection conn = null;
         PreparedStatement  preparedStatement = null;
         ResultSet rs = null;
         String SQL = "";
+        Usuarios usu = null;
         boolean existe = false;
         
         // Obtem conexao com BD
@@ -73,12 +74,20 @@ public class UsuariosDAO {
 
         // Verifica se possui dados
         if (rs.next()) {
-            existe = true;            
+            existe = true; 
+            
+            usu = new Usuarios();
+            usu.setLogin(rs.getString("login"));
+            usu.setNome(rs.getString("nome"));
+            usu.setSenha(rs.getString("senha"));
+            usu.setPerfil(rs.getString("perfil"));
+            usu.setStatus(rs.getString("status"));
+           
          } 
         
         // Fechar conexao
         conn.close();
         
-        return existe;
+        return usu;
     }    
 }
